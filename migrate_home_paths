@@ -1,0 +1,28 @@
+.config/tox
+.config/qBittorrent
+.eclipse
+.local/share/Aspyr/
+.minecraft
+.mozilla
+.PlayOnLinux
+.Skype
+.steam
+.unison
+Desktop
+Desktop 4
+Documents
+Downloads
+eclipse 4.4.1
+git
+My Games
+Scripts
+Steam
+workspace
+.bash_history
+.face.icon
+.gitconfig
+kthx.kdbx
+n1.tar.gz.gpg
+n2.tar.gz.gpg
+
+.ssh
