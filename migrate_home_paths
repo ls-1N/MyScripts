@@ -1,28 +1,48 @@
-.config/tox
+#Lines with hash # will be ignored.
+.config/deadbeef
+.config/freeplane
+.config/kdeconnect
+.config/KeePass
 .config/qBittorrent
+.config/tox
+.config/WarThunder
 .eclipse
-.local/share/Aspyr/
+#.hedgewars
+.local/share/Aspyr
+.local/share/applications
+.local/share/democracy3
+.local/share/FrozenSynapse
+.local/share/icons
+.local/share/multimc
+.local/share/Terraria
+.local/share/Paradox Interactive
+.local/share/vlc/lua/playlist/149909-playlist_youtube.lua
 .minecraft
 .mozilla
+.paradoxinteractive
+.phoronix-test-suite
 .PlayOnLinux
+.purple
 .Skype
+.ssh
 .steam
 .unison
+BAK
 Desktop
 Desktop 4
 Documents
 Downloads
-eclipse 4.4.1
 git
-My Games
+GOG Games
+idle_master_py
+lmms
+Music
+Pictures
 Scripts
-Steam
-workspace
+Videos
+
 .bash_history
 .face.icon
 .gitconfig
+.profile
 kthx.kdbx
-n1.tar.gz.gpg
-n2.tar.gz.gpg
-
-.ssh
