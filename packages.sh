@@ -11,10 +11,10 @@ sudo add-apt-repository -y ppa:videolan/stable-daily
 #sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
 
 #apt-get -y install unison glmark2 unrar
-sudo apt-get -y install playonlinux steam vlc gimp qbittorrent keepass2 gcal phoronix-test-suite openssh-server eclipse pidgin freeplane
-sudo apt-get -y purge amarok* ktorrent* #kwalletmanager
+sudo apt-get -y install steam playonlinux vlc gimp qbittorrent keepass2 gcal phoronix-test-suite openssh-server eclipse pidgin freeplane lm-sensors lolcat libreoffice git #screenfetch
+sudo apt-get -y purge amarok* ktorrent* transmission* gnumeric* abiword* gmusicbrowser* parole* #kwalletmanager
 
-sudo add-apt-repository -y ppa:starws-box/deadbeef-player && sudo apt-get -y install deadbeef
+sudo add-apt-repository -y ppa:starws-box/deadbeef-player && sudo apt install -y deadbeef
 
 #ASJAD MIDA EI TEA {
 
@@ -43,14 +43,34 @@ echo "deb https://pkg.tox.chat/debian nightly release" | sudo tee /etc/apt/sourc
 wget -qO - https://pkg.tox.chat/debian/pkg.gpg.key | sudo apt-key add -
 sudo apt-get install apt-transport-https
 sudo apt-get update
-sudo apt-get install utox
+sudo apt-get install -y utox
 
-#still need to manually install:
-wget https://installer.id.ee/media/install-scripts/install-open-eid.sh
-
-#for brightness scripts:
+#chmod for brightness scripts:
+#TODO: this doesnt work if there is no "exit 0" in the file
 sed 's:^exit 0:chmod 777 /sys/class/backlight/intel_backlight/brightness\n&:' /etc/rc.local | sudo tee /etc/rc.local
 
-#TODO: install pyautogui
+#install pyautogui
+sudo apt install idle3 python3-pip scrot python3-tk python3-dev -y
+sudo pip3 install python3-xlib
+sudo pip3 install pyautogui
 
-#TODO: add pidgin plugins
+#add pidgin plugins for skype, facebook and steam
+sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C03AA79CFFEBD240
+sudo echo "deb http://ppa.launchpad.net/aap/pidgin/ubuntu $DISTRO main" | sudo tee /etc/apt/sources.list.d/pidgin-skypeweb.list
+sudo apt update
+sudo apt install -y pidgin-skypeweb
+
+#change ubuntu version manually
+sudo echo "deb http://download.opensuse.org/repositories/home:/jgeboski/xUbuntu_14.04/ ./ " | sudo tee /etc/apt/sources.list.d/jgeboski.list
+wget -O- https://jgeboski.github.io/obs.key | sudo apt-key add -
+sudo apt update
+sudo apt install -y purple-facebook
+
+#manually check sometimes if this is the newest release at https://github.com/EionRobb/pidgin-opensteamworks/releases
+cd $HOME
+cd .purple/plugins
+wget https://github.com/EionRobb/pidgin-opensteamworks/releases/download/1.6.1/libsteam64-1.6.1.so
+
+#still need to manually install:
+cd $HOME
+wget https://installer.id.ee/media/install-scripts/install-open-eid.sh
