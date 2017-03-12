@@ -1,17 +1,22 @@
 #Lines with hash # will be ignored.
 .config/deadbeef
 .config/freeplane
+.config/itch
 #.config/kdeconnect
 .config/KeePass
 .config/qBittorrent
+.config/scc
 .config/Skype
 .config/tox
+.config/unity3d
 .config/WarThunder
 .config/kglobalshortcutsrc
 .config/khotkeysrc
 .eclipse
 #.godot
 #.hedgewars
+.klei
+#.local/share/0ad
 .local/share/applications
 .local/share/Aspyr
 .local/share/data/qBittorrent
@@ -22,28 +27,33 @@
 .local/share/Paradox Interactive
 .local/share/Rocket League
 .local/share/Terraria
+.local/share/TornBanner
 .local/share/TowerFall
 .local/share/vlc/lua/playlist/149909-playlist_youtube.lua
 .local/share/Zachtronics Industries
+.madgarden
 .minecraft
 .mozilla
 .paradoxinteractive
 .phoronix-test-suite
-.PlayOnLinux
+#.PlayOnLinux
 .purple
 .Skype
 .ssh
 .steam/steam/steamapps/common/Crawl/Crawl.sav
-.steam
+#.steam
+.stepmania-5.0
+.thunderbird
 .unison
+Anki
 BAK
 Desktop
-Desktop 4
 Documents
 Downloads
 git
 GOG Games
 idle_master_py
+kdenlive
 lmms
 Music
 Pictures
