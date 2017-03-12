@@ -1,24 +1,25 @@
 #!/bin/bash
 
 
-#ASJAD MILLEST SAAN ARU
-
 #activate canonical partners
-DISTRO=`cat /etc/*-release | grep DISTRIB_CODENAME | sed 's/.*=//g'`
+DISTRO=`cat /etc/*-release | grep DISTRIB_CODENAME | sed 's/.*=//g'` &&
 sudo sed -i 's/\(# \)\(deb .*ubuntu '${DISTRO}' partner\)/\2/g' /etc/apt/sources.list
 
 sudo add-apt-repository -y ppa:videolan/stable-daily
 #sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
+sudo apt update
 
-#apt-get -y install unison glmark2 unrar
-sudo apt-get -y install steam playonlinux vlc gimp qbittorrent keepass2 gcal phoronix-test-suite openssh-server eclipse pidgin freeplane lm-sensors lolcat libreoffice git #screenfetch
-sudo apt-get -y purge amarok* ktorrent* transmission* gnumeric* abiword* gmusicbrowser* parole* #kwalletmanager
+#apt-get install -y unison glmark2 unrar
+sudo apt install -y steam playonlinux vlc gimp qbittorrent keepass2 gcal phoronix-test-suite openssh-server eclipse pidgin freeplane lm-sensors lolcat libreoffice git redshift anki kdenlive gparted qtqr lmms thunderbird audacity screenfetch
+sudo apt -y purge amarok* ktorrent* transmission* gnumeric* abiword* gmusicbrowser* parole* dragonplayer* #kwalletmanager
 
-sudo add-apt-repository -y ppa:starws-box/deadbeef-player && sudo apt install -y deadbeef
+sudo add-apt-repository -y ppa:starws-box/deadbeef-player &&
+sudo apt update &&
+sudo apt install -y deadbeef
 
-#ASJAD MIDA EI TEA {
+#Pasted from some place and dont actually know these {
 
-# sudo apt-get -y install gdebi-core software-properties-gtk aptitude 
+# sudo apt-get install -y gdebi-core software-properties-gtk aptitude 
 # echo "Downloading GetDeb and PlayDeb" && wget http://archive.getdeb.net/install_deb/getdeb-repository_0.1-1~getdeb1_all.deb http://archive.getdeb.net/install_deb/playdeb_0.3-1~getdeb1_all.deb && echo "Installing GetDeb" && sudo dpkg -i getdeb-repository_0.1-1~getdeb1_all.deb && echo "Installing PlayDeb" && sudo dpkg -i playdeb_0.3-1~getdeb1_all.deb && echo "Deleting Downloads" && rm -f getdeb-repository_0.1-1~getdeb1_all.deb && rm -f playdeb_0.3-1~getdeb1_all.deb
 # sudo add-apt-repository -y ppa:gnome3-team/gnome3
 # sudo add-apt-repository -y ppa:webupd8team/java
@@ -39,38 +40,60 @@ sudo add-apt-repository -y ppa:starws-box/deadbeef-player && sudo apt install -y
 #remove old key
 # sudo apt-key del 0C2E03A0
 
-echo "deb https://pkg.tox.chat/debian nightly release" | sudo tee /etc/apt/sources.list.d/tox.list
-wget -qO - https://pkg.tox.chat/debian/pkg.gpg.key | sudo apt-key add -
-sudo apt-get install apt-transport-https
-sudo apt-get update
+echo "deb https://pkg.tox.chat/debian nightly release" | sudo tee /etc/apt/sources.list.d/tox.list &&
+wget -qO - https://pkg.tox.chat/debian/pkg.gpg.key | sudo apt-key add - &&
+sudo apt-get install -y apt-transport-https &&
+sudo apt-get update &&
 sudo apt-get install -y utox
+
 
 #chmod for brightness scripts:
 #TODO: this doesnt work if there is no "exit 0" in the file
 sed 's:^exit 0:chmod 777 /sys/class/backlight/intel_backlight/brightness\n&:' /etc/rc.local | sudo tee /etc/rc.local
 
+
 #install pyautogui
-sudo apt install idle3 python3-pip scrot python3-tk python3-dev -y
-sudo pip3 install python3-xlib
+sudo apt install -y idle3 python3-pip scrot python3-tk python3-dev &&
+sudo pip3 install python3-xlib &&
 sudo pip3 install pyautogui
 
+
 #add pidgin plugins for skype, facebook and steam
-sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C03AA79CFFEBD240
-sudo echo "deb http://ppa.launchpad.net/aap/pidgin/ubuntu $DISTRO main" | sudo tee /etc/apt/sources.list.d/pidgin-skypeweb.list
-sudo apt update
-sudo apt install -y pidgin-skypeweb
+#sudo apt-key adv --keyserver keyserver.ubuntu.com --recv-keys C03AA79CFFEBD240
+#sudo echo "deb http://ppa.launchpad.net/aap/pidgin/ubuntu $DISTRO main" | sudo #tee /etc/apt/sources.list.d/pidgin-skypeweb.list
+#sudo apt update
+#sudo apt install -y pidgin-skypeweb
 
-#change ubuntu version manually
-sudo echo "deb http://download.opensuse.org/repositories/home:/jgeboski/xUbuntu_14.04/ ./ " | sudo tee /etc/apt/sources.list.d/jgeboski.list
-wget -O- https://jgeboski.github.io/obs.key | sudo apt-key add -
-sudo apt update
-sudo apt install -y purple-facebook
-
+cd $HOME &&
+sudo apt install -y libpurple-dev libjson-glib-dev cmake gcc &&
+git clone git://github.com/EionRobb/skype4pidgin.git &&
+cd skype4pidgin/skypeweb/ &&
+mkdir build &&
+cd build &&
+cmake .. &&
+cpack &&
+sudo dpkg -i skypeweb* &&
+cd $HOME &&
+sudo rm -r skype4pidgin
+ 
 #manually check sometimes if this is the newest release at https://github.com/EionRobb/pidgin-opensteamworks/releases
-cd $HOME
-cd .purple/plugins
+cd $HOME &&
+cd .purple/plugins &&
 wget https://github.com/EionRobb/pidgin-opensteamworks/releases/download/1.6.1/libsteam64-1.6.1.so
 
+#change ubuntu version manually
+sudo echo "deb http://download.opensuse.org/repositories/home:/jgeboski/xUbuntu_16.04/ ./ " | sudo tee /etc/apt/sources.list.d/jgeboski.list &&
+wget -O- https://jgeboski.github.io/obs.key | sudo apt-key add - &&
+sudo apt update &&
+sudo apt install -y purple-facebook
+
+#change ubuntu version manually
+sudo sh -c "echo 'deb https://dl.ring.cx/ring-nightly/ubuntu_16.04/ ring main' > /etc/apt/sources.list.d/ring-nightly-man.list" &&
+sudo apt-key adv --keyserver pgp.mit.edu --recv-keys A295D773307D25A33AE72F2F64CD5FA175348F84 &&
+sudo add-apt-repository universe &&
+sudo apt update &&
+sudo apt install -y ring
+
 #still need to manually install:
-cd $HOME
+cd $HOME &&
 wget https://installer.id.ee/media/install-scripts/install-open-eid.sh
