@@ -18,7 +18,7 @@ It will fail on an individual file if it exists at DEST and is of a different ty
 Known assumptions:
     - That SOURCE, DEST and migrate_home_paths exist."
 
-#Display help if more than 2 args or 1 arg is --help
+#Display help if not exactly 2 args or if 1 arg is --help
 if [ $# -eq 1 ] && [ $1 == "--help" ] || [ $# -ne 2 ]; then
     echo "$help_message"
     exit 1
