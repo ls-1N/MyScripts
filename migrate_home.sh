@@ -6,13 +6,13 @@ dest="$2";
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 #The message that gets displayed as help
 help_message="Usage: migrate_home.sh SOURCE DEST
-Copy from SOURCE to DEST all the files and directories (including all contained subdirectories and files) mentioned in the file $script_dir/migrate_home_paths
+Copy from SOURCE to DEST all the files and directories (including all contained subdirectories and files) mentioned in the file \$script_dir/migrate_home_paths
 Lines in that file will be skipped if the line begins with a hash #.
 
 Arguments:
         --help  display this help and exit
 
-A logfile will be created at $script_dir/migrate_home.log.
+A logfile will be created at \$script_dir/migrate_home.log.
 This script will overwrite any matching files and folders in the DEST directory.
 It will fail on an individual file if it exists at DEST and is of a different type (normal file or directory) than the one in SOURCE.
 Known assumptions:

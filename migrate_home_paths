@@ -10,8 +10,9 @@
 .config/tox
 .config/unity3d
 .config/WarThunder
-.config/kglobalshortcutsrc
-.config/khotkeysrc
+.config/kglobalshortcutsrc #assuming Kubuntu
+.config/khotkeysrc #assuming Kubuntu
+ .config/kwinrulesrc #assuming Kubuntu
 .eclipse
 #.godot
 #.hedgewars
@@ -51,7 +52,7 @@ Desktop
 Documents
 Downloads
 git
-GOG Games
+#GOG Games
 idle_master_py
 kdenlive
 lmms
