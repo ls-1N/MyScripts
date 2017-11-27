@@ -10,7 +10,7 @@ sudo add-apt-repository -y ppa:videolan/stable-daily
 sudo apt update
 
 #apt-get install -y unison glmark2 unrar
-sudo apt install -y steam playonlinux vlc gimp qbittorrent keepass2 gcal phoronix-test-suite openssh-server eclipse pidgin freeplane lm-sensors lolcat libreoffice git redshift anki kdenlive gparted qtqr lmms thunderbird audacity screenfetch
+sudo apt install -y steam playonlinux vlc gimp qbittorrent keepass2 gcal phoronix-test-suite openssh-server eclipse pidgin freeplane lm-sensors lolcat libreoffice git redshift-gtk anki kdenlive gparted qtqr lmms thunderbird audacity screenfetch
 sudo apt -y purge amarok* ktorrent* transmission* gnumeric* abiword* gmusicbrowser* parole* dragonplayer* #kwalletmanager
 
 sudo add-apt-repository -y ppa:starws-box/deadbeef-player &&
