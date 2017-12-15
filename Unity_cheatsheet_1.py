@@ -1,6 +1,7 @@
 #!/usr/bin/python3
 
 #A very basic imitation using python and Qt5 of Unity DE-s OS hotkey cheatsheet which used to be displayed after holding Super (/Win/Meta/Command/mod4Mask) key for a second or two and closed at the release of said key.
+#You probably need Qt5 installed one way or another. What worked for me (after having installed pip) was `pip3 install --user pyqt5`
 
 #2017-11-27 Ver 1.0 Considered removing titlebar and closing it on unfocus and renaming process, but didnt have enough time (sleep pls).
 #2017-11-27 Ver 1.1 Added font scaling.
