@@ -7,4 +7,4 @@ from time import sleep
 
 while True:
     click()
-    sleep(5)
+    sleep(0.01)
