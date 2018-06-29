@@ -34,6 +34,7 @@ main()  {
         #Skip line if $REPLY is missing in $src
         [[ ! -e "$REPLY" ]] && echo mig: SOURCE missing for "$src"/"$REPLY" && continue
         #If everything is fine
+        echo mig: attempting cp: "$REPLY"
         cp -av --parents "$REPLY" "$dest" && echo mig: success cp: "$REPLY"
     done < "$script_dir"/migrate_home_paths
 
