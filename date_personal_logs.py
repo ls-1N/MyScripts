@@ -13,7 +13,7 @@ import time
 #sudo apt-get install python-tk
 
 
-#variables
+#define variables
 t = datetime.date.today()
 weekday = (datetime.date.weekday(t))
 
