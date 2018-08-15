@@ -5,10 +5,22 @@
 DISTRO=`cat /etc/*-release | grep DISTRIB_CODENAME | sed 's/.*=//g'` &&
 sudo sed -i 's/\(# \)\(deb .*ubuntu '${DISTRO}' partner\)/\2/g' /etc/apt/sources.list
 
+flatpak install flathub io.github.qtox.qTox
+
+sudo add-apt-repository ppa:phoerious/keepassxc
+
+sudo add-apt-repository ppa:nextcloud-devs/client
+
 #seems to be non-existent
 #sudo add-apt-repository -y ppa:videolan/stable-daily
 
+sudo add-apt-repository -y ppa:starws-box/deadbeef-player
+
 sudo apt-add-repository ppa:neovim-ppa/stable
+
+sudo sh -c "echo 'deb https://riot.im/packages/debian/ $DISTRO main' > /etc/apt/sources.list.d/matrix-riot-im.list"
+curl -L https://riot.im/packages/debian/repo-key.asc | sudo apt-key add -
+
 
 wget -nv https://download.opensuse.org/repositories/home:kozec/xUbuntu_18.04/Release.key -O Release.key
 sudo apt-key add - < Release.key
@@ -20,15 +32,15 @@ sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/kozec/xUbu
 
 sudo apt update
 
-sudo apt install -y apt-transport-https utox python-evdev python-pylibacl sc-controller neovim steam playonlinux vlc gimp qbittorrent gcal phoronix-test-suite openssh-server pidgin freeplane lm-sensors lolcat libreoffice git redshift-gtk anki kdenlive gparted qtqr lmms thunderbird audacity screenfetch synaptic unrar
+sudo apt install -y python-evdev python-pylibacl sc-controller neovim steam playonlinux vlc gimp krita qbittorrent gcal phoronix-test-suite openssh-server pidgin freeplane lm-sensors lolcat libreoffice git redshift-gtk anki kdenlive gparted qtqr lmms thunderbird audacity screenfetch synaptic unrar keepassxc nextcloud-client riot-web deadbeef
 #apt-get install -y unison glmark2 unrar keepass2 eclipse
 sudo apt -y purge ktorrent* transmission* gnumeric* abiword* gmusicbrowser* parole* dragonplayer* 
 #sudo apt -y purge kwalletmanager amarok*
 
-sudo add-apt-repository -y ppa:starws-box/deadbeef-player &&
-sudo apt update &&
-sudo apt install -y deadbeef
 
+wget https://github.com/mbusb/multibootusb/releases/download/v9.2.0/python3-multibootusb_9.2.0-1_all.deb
+sudo dpkg -i ./python3-multibootusb_9.2.0-1_all.deb
+rm -f ./python3-multibootusb_9.2.0-1_all.deb
 
 wget https://github.com/onivim/oni/releases/download/v0.3.6/Oni-0.3.6-amd64-linux.deb
 sudo dpkg -i ./Oni-0.3.6-amd64-linux.deb
