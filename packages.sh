@@ -5,14 +5,18 @@
 DISTRO=`cat /etc/*-release | grep DISTRIB_CODENAME | sed 's/.*=//g'` &&
 sudo sed -i 's/\(# \)\(deb .*ubuntu '${DISTRO}' partner\)/\2/g' /etc/apt/sources.list
 
-sudo add-apt-repository -y ppa:videolan/stable-daily
+#seems to be non-existent
+#sudo add-apt-repository -y ppa:videolan/stable-daily
 
 sudo apt-add-repository ppa:neovim-ppa/stable
 
+wget -nv https://download.opensuse.org/repositories/home:kozec/xUbuntu_18.04/Release.key -O Release.key
+sudo apt-key add - < Release.key
 sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/kozec/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/home:kozec.list"
 
-echo "deb https://pkg.tox.chat/debian nightly release" | sudo tee /etc/apt/sources.list.d/tox.list &&
-wget -qO - https://pkg.tox.chat/debian/pkg.gpg.key | sudo apt-key add - &&
+#seems to be non-existent
+#echo "deb https://pkg.tox.chat/debian nightly release" | sudo tee /etc/apt/sources.list.d/tox.list &&
+#wget -qO - https://pkg.tox.chat/debian/pkg.gpg.key | sudo apt-key add - &&
 
 sudo apt update
 
