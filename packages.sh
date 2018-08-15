@@ -10,7 +10,7 @@ sudo add-apt-repository -y ppa:videolan/stable-daily
 sudo apt update
 
 #apt-get install -y unison glmark2 unrar
-sudo apt install -y steam playonlinux vlc gimp qbittorrent keepass2 gcal phoronix-test-suite openssh-server eclipse pidgin freeplane lm-sensors lolcat libreoffice git redshift-gtk anki kdenlive gparted qtqr lmms thunderbird audacity screenfetch
+sudo apt install -y steam playonlinux vlc gimp qbittorrent keepass2 gcal phoronix-test-suite openssh-server pidgin freeplane lm-sensors lolcat libreoffice git redshift-gtk anki kdenlive gparted qtqr lmms thunderbird audacity screenfetch
 sudo apt -y purge amarok* ktorrent* transmission* gnumeric* abiword* gmusicbrowser* parole* dragonplayer* #kwalletmanager
 
 sudo add-apt-repository -y ppa:starws-box/deadbeef-player &&
@@ -82,13 +82,13 @@ cd .purple/plugins &&
 wget https://github.com/EionRobb/pidgin-opensteamworks/releases/download/1.6.1/libsteam64-1.6.1.so
 
 #change ubuntu version manually
-sudo echo "deb http://download.opensuse.org/repositories/home:/jgeboski/xUbuntu_16.04/ ./ " | sudo tee /etc/apt/sources.list.d/jgeboski.list &&
+sudo echo "deb http://download.opensuse.org/repositories/home:/jgeboski/xUbuntu_18.04/ ./ " | sudo tee /etc/apt/sources.list.d/jgeboski.list &&
 wget -O- https://jgeboski.github.io/obs.key | sudo apt-key add - &&
 sudo apt update &&
 sudo apt install -y purple-facebook
 
 #change ubuntu version manually
-sudo sh -c "echo 'deb https://dl.ring.cx/ring-nightly/ubuntu_16.04/ ring main' > /etc/apt/sources.list.d/ring-nightly-man.list" &&
+sudo sh -c "echo 'deb https://dl.ring.cx/ring-nightly/ubuntu_18.04/ ring main' > /etc/apt/sources.list.d/ring-nightly-man.list" &&
 sudo apt-key adv --keyserver pgp.mit.edu --recv-keys A295D773307D25A33AE72F2F64CD5FA175348F84 &&
 sudo add-apt-repository universe &&
 sudo apt update &&
