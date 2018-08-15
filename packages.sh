@@ -6,16 +6,29 @@ DISTRO=`cat /etc/*-release | grep DISTRIB_CODENAME | sed 's/.*=//g'` &&
 sudo sed -i 's/\(# \)\(deb .*ubuntu '${DISTRO}' partner\)/\2/g' /etc/apt/sources.list
 
 sudo add-apt-repository -y ppa:videolan/stable-daily
-#sudo add-apt-repository -y ppa:otto-kesselgulasch/gimp
+
+sudo apt-add-repository ppa:neovim-ppa/stable
+
+sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/kozec/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/home:kozec.list"
+
+echo "deb https://pkg.tox.chat/debian nightly release" | sudo tee /etc/apt/sources.list.d/tox.list &&
+wget -qO - https://pkg.tox.chat/debian/pkg.gpg.key | sudo apt-key add - &&
+
 sudo apt update
 
-#apt-get install -y unison glmark2 unrar
-sudo apt install -y steam playonlinux vlc gimp qbittorrent keepass2 gcal phoronix-test-suite openssh-server pidgin freeplane lm-sensors lolcat libreoffice git redshift-gtk anki kdenlive gparted qtqr lmms thunderbird audacity screenfetch
-sudo apt -y purge amarok* ktorrent* transmission* gnumeric* abiword* gmusicbrowser* parole* dragonplayer* #kwalletmanager
+sudo apt install -y apt-transport-https utox python-evdev python-pylibacl sc-controller neovim steam playonlinux vlc gimp qbittorrent gcal phoronix-test-suite openssh-server pidgin freeplane lm-sensors lolcat libreoffice git redshift-gtk anki kdenlive gparted qtqr lmms thunderbird audacity screenfetch synaptic unrar
+#apt-get install -y unison glmark2 unrar keepass2 eclipse
+sudo apt -y purge ktorrent* transmission* gnumeric* abiword* gmusicbrowser* parole* dragonplayer* 
+#sudo apt -y purge kwalletmanager amarok*
 
 sudo add-apt-repository -y ppa:starws-box/deadbeef-player &&
 sudo apt update &&
 sudo apt install -y deadbeef
+
+
+wget https://github.com/onivim/oni/releases/download/v0.3.6/Oni-0.3.6-amd64-linux.deb
+sudo dpkg -i ./Oni-0.3.6-amd64-linux.deb
+rm -f ./Oni-0.3.6-amd64-linux.deb
 
 #Pasted from some place and dont actually know these {
 
@@ -36,17 +49,6 @@ sudo apt install -y deadbeef
 ##sudo touch /usr/share/X11/xorg.conf.d/20-intel.conf
 ##sudo kate /usr/share/X11/xorg.conf.d/20-intel.conf
 
-#tox
-#remove old key
-# sudo apt-key del 0C2E03A0
-
-echo "deb https://pkg.tox.chat/debian nightly release" | sudo tee /etc/apt/sources.list.d/tox.list &&
-wget -qO - https://pkg.tox.chat/debian/pkg.gpg.key | sudo apt-key add - &&
-sudo apt-get install -y apt-transport-https &&
-sudo apt-get update &&
-sudo apt-get install -y utox
-
-
 #chmod for brightness scripts:
 #TODO: this doesnt work if there is no "exit 0" in the file
 sed 's:^exit 0:chmod 777 /sys/class/backlight/intel_backlight/brightness\n&:' /etc/rc.local | sudo tee /etc/rc.local
@@ -54,8 +56,8 @@ sed 's:^exit 0:chmod 777 /sys/class/backlight/intel_backlight/brightness\n&:' /e
 
 #install pyautogui
 sudo apt install -y idle3 python3-pip scrot python3-tk python3-dev &&
-sudo pip3 install python3-xlib &&
-sudo pip3 install pyautogui
+sudo -H pip3 install python3-xlib &&
+sudo -H pip3 install pyautogui
 
 
 #add pidgin plugins for skype, facebook and steam
