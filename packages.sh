@@ -5,14 +5,14 @@
 DISTRO=`cat /etc/*-release | grep DISTRIB_CODENAME | sed 's/.*=//g'` &&
 sudo sed -i 's/\(# \)\(deb .*ubuntu '${DISTRO}' partner\)/\2/g' /etc/apt/sources.list
 
-flatpak install flathub io.github.qtox.qTox
+#seems to be non-existent
+#sudo add-apt-repository -y ppa:videolan/stable-daily
 
 sudo add-apt-repository ppa:phoerious/keepassxc
 
 sudo add-apt-repository ppa:nextcloud-devs/client
 
-#seems to be non-existent
-#sudo add-apt-repository -y ppa:videolan/stable-daily
+sudo add-apt-repository ppa:alexlarsson/flatpak
 
 sudo add-apt-repository -y ppa:starws-box/deadbeef-player
 
@@ -33,10 +33,13 @@ sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/kozec/xUbu
 sudo apt update
 
 sudo apt install -y python-evdev python-pylibacl sc-controller neovim steam playonlinux vlc gimp krita qbittorrent gcal phoronix-test-suite openssh-server pidgin freeplane lm-sensors lolcat libreoffice git redshift-gtk anki kdenlive gparted qtqr lmms thunderbird audacity screenfetch synaptic unrar keepassxc nextcloud-client riot-web deadbeef
+sudo apt install -y flatpak
 #apt-get install -y unison glmark2 unrar keepass2 eclipse
 sudo apt -y purge ktorrent* transmission* gnumeric* abiword* gmusicbrowser* parole* dragonplayer* 
 #sudo apt -y purge kwalletmanager amarok*
 
+flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+flatpak install flathub io.github.qtox.qTox
 
 wget https://github.com/mbusb/multibootusb/releases/download/v9.2.0/python3-multibootusb_9.2.0-1_all.deb
 sudo dpkg -i ./python3-multibootusb_9.2.0-1_all.deb
