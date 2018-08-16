@@ -8,15 +8,15 @@ sudo sed -i 's/\(# \)\(deb .*ubuntu '${DISTRO}' partner\)/\2/g' /etc/apt/sources
 #seems to be non-existent
 #sudo add-apt-repository -y ppa:videolan/stable-daily
 
-sudo add-apt-repository ppa:phoerious/keepassxc
+sudo add-apt-repository -y ppa:phoerious/keepassxc
 
-sudo add-apt-repository ppa:nextcloud-devs/client
+sudo add-apt-repository -y ppa:nextcloud-devs/client
 
-sudo add-apt-repository ppa:alexlarsson/flatpak
+sudo add-apt-repository -y ppa:alexlarsson/flatpak
 
 sudo add-apt-repository -y ppa:starws-box/deadbeef-player
 
-sudo apt-add-repository ppa:neovim-ppa/stable
+sudo apt-add-repository -y ppa:neovim-ppa/stable
 
 sudo sh -c "echo 'deb https://riot.im/packages/debian/ $DISTRO main' > /etc/apt/sources.list.d/matrix-riot-im.list"
 curl -L https://riot.im/packages/debian/repo-key.asc | sudo apt-key add -
@@ -39,7 +39,7 @@ sudo apt -y purge ktorrent* transmission* gnumeric* abiword* gmusicbrowser* paro
 #sudo apt -y purge kwalletmanager amarok*
 
 flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
-flatpak install flathub io.github.qtox.qTox
+flatpak install -y flathub io.github.qtox.qTox
 
 wget https://github.com/mbusb/multibootusb/releases/download/v9.2.0/python3-multibootusb_9.2.0-1_all.deb
 sudo dpkg -i ./python3-multibootusb_9.2.0-1_all.deb
