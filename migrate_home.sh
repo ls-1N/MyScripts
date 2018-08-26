@@ -1,5 +1,7 @@
 #!/bin/bash
 
+#TODO: Should convert this to use rsync instead of cp since former is safer.
+
 src="$1";
 dest="$2";
 #The path of this script.
