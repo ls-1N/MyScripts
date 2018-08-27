@@ -14,6 +14,8 @@ sudo add-apt-repository -y ppa:nextcloud-devs/client
 
 sudo add-apt-repository -y ppa:alexlarsson/flatpak
 
+sudo add-apt-repository -y ppa:nilarimogard/webupd8 #for telegram-purple
+
 sudo add-apt-repository -y ppa:starws-box/deadbeef-player
 
 sudo apt-add-repository -y ppa:neovim-ppa/stable
@@ -32,7 +34,7 @@ sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/kozec/xUbu
 
 sudo apt update
 
-sudo apt install -y python-evdev python-pylibacl sc-controller neovim steam playonlinux vlc gimp krita qbittorrent gcal phoronix-test-suite openssh-server pidgin freeplane lm-sensors lolcat libreoffice git redshift-gtk anki kdenlive gparted qtqr lmms thunderbird audacity screenfetch synaptic unrar keepassxc nextcloud-client riot-web deadbeef
+sudo apt install -y python-evdev python-pylibacl sc-controller neovim steam playonlinux vlc gimp krita qbittorrent gcal phoronix-test-suite openssh-server pidgin freeplane lm-sensors lolcat libreoffice git redshift-gtk anki kdenlive gparted qtqr lmms thunderbird audacity screenfetch synaptic unrar keepassxc nextcloud-client riot-web deadbeef telegram-purple filelight
 sudo apt install -y flatpak
 #apt-get install -y unison glmark2 unrar keepass2 eclipse
 sudo apt -y purge ktorrent* transmission* gnumeric* abiword* gmusicbrowser* parole* dragonplayer* 
