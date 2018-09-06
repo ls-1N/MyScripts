@@ -12,6 +12,7 @@ sudo cp LOGO.JPG /mnt/temp1/
 sudo cp LOGO.JPG /mnt/temp1/FLASH/
 sudo cp LOGO.JPG /mnt/temp1/FLASH/N23ET52W/
 sudo umount /mnt/temp1
+cp bios-update.modified.img bios-update.img
 
 ##### WARNING #####
 #Check if your usb drive *is* actually /dev/sdb from `sudo fdisk -l`.
