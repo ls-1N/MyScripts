@@ -35,7 +35,7 @@ main()  {
         [[ ! -e "$REPLY" ]] && echo mig: SOURCE missing for "$src"/"$REPLY" && continue
         #If everything is fine
         echo mig: attempting rync: "$REPLY">> log_file 2>&1
-        rsync -avHAXEI --progress "$REPLY" "$dest" 2>&1 && echo mig: success rsync: "$REPLY" || echo mig: failure rsync: "$REPLY"
+        rsync -avHAXEc --progress "$REPLY" "$dest" 2>&1 && echo mig: success rsync: "$REPLY" || echo mig: failure rsync: "$REPLY"
     done < "$script_dir"/migrate_home_paths
 
 }
