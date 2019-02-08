@@ -4,6 +4,11 @@ src="$1";
 dest="$2";
 #The path of this script.
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+#Paths
+list_path="$script_dir"/migrate_home_paths_list;
+log_path="$script_dir"/migrate_home-$(date -I'seconds').log;
+
 #The message that gets displayed as help
 help_message="Usage: migrate_home.sh SOURCE DEST
 Copy from SOURCE to DEST all the files and directories (including all contained subdirectories and files) mentioned in the file \$script_dir/migrate_home_paths
@@ -36,9 +41,9 @@ main()  {
         #If everything is fine
         echo mig: attempting rync: "$REPLY">> log_file 2>&1
         rsync -avHAXEc --progress "$REPLY" "$dest" 2>&1 && echo mig: success rsync: "$REPLY" || echo mig: failure rsync: "$REPLY"
-    done < "$script_dir"/migrate_home_paths
+    done < "$list_path"
 
 }
 
 #Outputting stdout and stderr to logfile
-main 2>&1 | tee "$script_dir"/migrate_home.log
+main 2>&1 | tee "$log_path"
