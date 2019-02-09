@@ -28,7 +28,7 @@ Known assumptions:
     - That SOURCE, DEST and migrate_home_paths exist."
 
 # Display help if not exactly 2 args or if 1 arg is --help
-if [ $# -eq 1 ] && [ $1 == "--help" ] || [ $# -ne 2 ]; then
+if [ $# -ne 2 ]; then
     echo "$help_message"
     exit 1
 fi
