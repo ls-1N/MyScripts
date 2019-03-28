@@ -6,6 +6,7 @@ dest="$2";
 
 # Get the path of this script
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+echo detected $script_dir as script directory.
 
 # Set path variables
 list_path="$script_dir"/migrate_home_paths_list;
