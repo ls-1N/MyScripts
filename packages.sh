@@ -34,8 +34,46 @@ sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/kozec/xUbu
 
 sudo apt update
 
-sudo apt install -y python-evdev python-pylibacl sc-controller neovim steam playonlinux vlc gimp krita qbittorrent gcal phoronix-test-suite openssh-server pidgin freeplane lm-sensors lolcat libreoffice git redshift-gtk anki kdenlive gparted qtqr lmms thunderbird audacity screenfetch synaptic unrar keepassxc nextcloud-client riot-web deadbeef telegram-purple filelight
+sudo apt install -y python-evdev
+sudo apt install -y python-pylibacl
+sudo apt install -y sc-controller
+sudo apt install -y neovim
+sudo apt install -y steam
+sudo apt install -y playonlinux
+sudo apt install -y vlc
+sudo apt install -y gimp
+sudo apt install -y krita
+sudo apt install -y qbittorrent
+sudo apt install -y gcal
+sudo apt install -y phoronix-test-suite
+sudo apt install -y openssh-server
+sudo apt install -y pidgin
+sudo apt install -y freeplane
+sudo apt install -y lm-sensors
+sudo apt install -y lolcat
+sudo apt install -y libreoffice
+sudo apt install -y git
+sudo apt install -y redshift-gtk
+sudo apt install -y anki
+sudo apt install -y kdenlive
+sudo apt install -y gparted
+sudo apt install -y qtqr
+sudo apt install -y lmms
+sudo apt install -y thunderbird
+sudo apt install -y audacity
+sudo apt install -y screenfetch
+sudo apt install -y synaptic
+sudo apt install -y unrar
+sudo apt install -y keepassxc
+sudo apt install -y nextcloud-client
+sudo apt install -y riot-web
+sudo apt install -y deadbeef
+sudo apt install -y telegram-purple
+sudo apt install -y filelight
 sudo apt install -y flatpak
+sudo apt install -y youtube-dl
+sudo apt install -y ppa-purge
+sudo apt install -y htop
 #apt-get install -y unison glmark2 unrar keepass2 eclipse
 sudo apt -y purge ktorrent* transmission* gnumeric* abiword* gmusicbrowser* parole* dragonplayer* 
 #sudo apt -y purge kwalletmanager amarok*
