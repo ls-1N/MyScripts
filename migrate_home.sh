@@ -56,3 +56,7 @@ main()  {
 
 # Outputting stdout and stderr to logfile
 main 2>&1 | tee "$log_path"
+echo "---------------------------------------------------------------------"
+echo "If you want wifi access please don't forget to also run:"
+echo "sudo chown -R k:k ~/Documents/BAK/wifis/from-network-manager/system-connections"
+echo "sudo rsync -aHAXEc ~/Documents/BAK/wifis/from-network-manager/system-connections/ /etc/NetworkManager/system-connections/"
