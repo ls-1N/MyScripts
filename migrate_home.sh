@@ -6,7 +6,7 @@ destinationDir="$2";
 
 # Get the path of this script
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-echo detected $script_dir as script directory.
+echo Detected $script_dir as script directory.
 
 # Set path variables
 list_path="$script_dir"/migrate_home_paths_list;
@@ -50,13 +50,13 @@ main()  {
         [[ ! -e "$REPLY" ]] && echo mig: SOURCE missing for "$sourceDir""$REPLY" && continue
         # If everything is fine
         echo mig: attempting rync: "$REPLY"
-        rsync -aHAXEc -vR --progress "$REPLY" "$destinationDir" 2>&1 && echo mig: success rsync: "$REPLY" || echo mig: failure rsync: "$REPLY"
+        sudo rsync -aHAXEc -vR --progress "$REPLY" "$destinationDir" 2>&1 && echo mig: success rsync: "$REPLY" || echo mig: failure rsync: "$REPLY"
     done < "$list_path"
 
 }
 
 # Outputting stdout and stderr to logfile
-main 2>&1 | tee "$log_path"
+main 2>&1 | sudo tee "$log_path"
 echo "---------------------------------------------------------------------"
 echo "If you want wifi access please don't forget to also run:"
 echo "sudo chown -R k:k ~/Documents/BAK/wifis/from-network-manager/system-connections"
