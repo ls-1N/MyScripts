@@ -13,13 +13,15 @@ sudo add-apt-repository -y ppa:nextcloud-devs/client
 
 sudo add-apt-repository -y ppa:alexlarsson/flatpak
 
-sudo add-apt-repository -y ppa:nilarimogard/webupd8 #for telegram-purple
+sudo add-apt-repository -y ppa:nilarimogard/webupd8 # for telegram-purple
 
 sudo add-apt-repository -y ppa:starws-box/deadbeef-player
 
 sudo apt-add-repository -y ppa:neovim-ppa/stable
 
 sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+
+sudo add-apt-repository ppa:kubuntu-ppa/backports # for plasma-browser-integration
 
 # Pubkey broken
 # sudo sh -c "echo 'deb https://riot.im/packages/debian/ $DISTRO main' > /etc/apt/sources.list.d/matrix-riot-im.list"
@@ -29,9 +31,12 @@ sudo add-apt-repository ppa:danielrichter2007/grub-customizer
 wget -nv https://download.opensuse.org/repositories/home:kozec/xUbuntu_18.04/Release.key -O Release.key
 sudo apt-key add - < Release.key
 sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/kozec/xUbuntu_18.04/ /' > /etc/apt/sources.list.d/home:kozec.list"
+rm ./Release.key
 
 sudo apt update
+sudo apt upgrade -y
 
+sudo apt install -y plasma-browser-integration
 sudo apt install -y borgbackup
 sudo apt install -y grub-customizer
 sudo apt install -y python-evdev
