@@ -49,8 +49,8 @@ main()  {
         # Skip line if $REPLY is missing in $sourceDir
         [[ ! -e "$REPLY" ]] && echo mig: SOURCE missing for "$sourceDir""$REPLY" && continue
         # If everything is fine
-        echo mig: attempting rync: "$REPLY"
-        sudo rsync -aHAXEc -vR --progress "$REPLY" "$destinationDir" 2>&1 && echo mig: success rsync: "$REPLY" || echo mig: failure rsync: "$REPLY"
+        echo mig: attempting rsync: "$REPLY"
+        sudo rsync -aHAXEc -vR "$REPLY" "$destinationDir" 2>&1 && echo mig: success rsync: "$REPLY" || echo mig: failure rsync: "$REPLY"
     done < "$list_path"
 
 }
