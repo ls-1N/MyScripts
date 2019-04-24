@@ -1,8 +1,8 @@
 #!/bin/bash
 
 # Get the parameters/args
-src="$1";
-dest="$2";
+sourceDir="$1";
+destinationDir="$2";
 
 # Get the path of this script
 script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
@@ -36,20 +36,21 @@ if [ $# -ne 2 ]; then
     exit 1
 fi
 
+echo Trying to copy from "$sourceDir" to "$destinationDir".
 
 main()  {
     # If we cant change dir, then exit
-    cd "$src" || exit 1
+    cd "$sourceDir" || exit 1
     while read -r; do
         # Skip a line if it begins with a hash.
         [[ "$REPLY" =~ ^# ]] && echo mig: skipping "$REPLY" && continue
         # Skip a line if it is empty.
         [[ -z "$REPLY" ]] && echo mig: skipping empty line && continue
-        # Skip line if $REPLY is missing in $src
-        [[ ! -e "$REPLY" ]] && echo mig: SOURCE missing for "$src"/"$REPLY" && continue
+        # Skip line if $REPLY is missing in $sourceDir
+        [[ ! -e "$REPLY" ]] && echo mig: SOURCE missing for "$sourceDir""$REPLY" && continue
         # If everything is fine
         echo mig: attempting rync: "$REPLY"
-        rsync -aHAXEc -vR --progress "$REPLY" "$dest" 2>&1 && echo mig: success rsync: "$REPLY" || echo mig: failure rsync: "$REPLY"
+        rsync -aHAXEc -vR --progress "$REPLY" "$destinationDir" 2>&1 && echo mig: success rsync: "$REPLY" || echo mig: failure rsync: "$REPLY"
     done < "$list_path"
 
 }
