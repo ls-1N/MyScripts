@@ -19,6 +19,8 @@ sudo add-apt-repository -y ppa:starws-box/deadbeef-player
 
 sudo apt-add-repository -y ppa:neovim-ppa/stable
 
+sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+
 # Pubkey broken
 # sudo sh -c "echo 'deb https://riot.im/packages/debian/ $DISTRO main' > /etc/apt/sources.list.d/matrix-riot-im.list"
 # curl -L https://riot.im/packages/debian/repo-key.asc | sudo apt-key add -
@@ -30,6 +32,8 @@ sudo sh -c "echo 'deb http://download.opensuse.org/repositories/home:/kozec/xUbu
 
 sudo apt update
 
+sudo apt install -y borgbackup
+sudo apt install -y grub-customizer
 sudo apt install -y python-evdev
 sudo apt install -y python-pylibacl
 sudo apt install -y sc-controller
@@ -67,7 +71,7 @@ sudo apt install -y deadbeef
 sudo apt install -y telegram-purple
 sudo apt install -y filelight
 sudo apt install -y flatpak
-sudo apt install -y youtube-dl
+sudo pip3 install -U youtube-dl
 sudo apt install -y ppa-purge
 sudo apt install -y htop
 # apt-get install -y unison glmark2 unrar keepass2 eclipse
