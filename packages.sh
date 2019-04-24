@@ -145,6 +145,8 @@ sudo apt install -y purple-facebook
 # sudo apt update &&
 # sudo apt install -y ring
 
-# Still need to manually install:
+# Untested automation:
 cd $HOME &&
-wget https://installer.id.ee/media/install-scripts/install-open-eid.sh
+wget https://installer.id.ee/media/install-scripts/install-open-eid.sh &&
+sudo bash ./install-open-eid.sh &&
+rm ./install-open-eid.sh
