@@ -19,8 +19,9 @@ sudo add-apt-repository -y ppa:starws-box/deadbeef-player
 
 sudo apt-add-repository -y ppa:neovim-ppa/stable
 
-sudo sh -c "echo 'deb https://riot.im/packages/debian/ $DISTRO main' > /etc/apt/sources.list.d/matrix-riot-im.list"
-curl -L https://riot.im/packages/debian/repo-key.asc | sudo apt-key add -
+# Pubkey broken
+# sudo sh -c "echo 'deb https://riot.im/packages/debian/ $DISTRO main' > /etc/apt/sources.list.d/matrix-riot-im.list"
+# curl -L https://riot.im/packages/debian/repo-key.asc | sudo apt-key add -
 
 
 wget -nv https://download.opensuse.org/repositories/home:kozec/xUbuntu_18.04/Release.key -O Release.key
@@ -105,8 +106,8 @@ rm -f ./Oni-0.3.6-amd64-linux.deb
 # sudo kate /usr/share/X11/xorg.conf.d/20-intel.conf
 
 # Chmod for brightness scripts:
-# TODO: this doesnt work if there is no "exit 0" in the file
-sed 's:^exit 0:chmod 777 /sys/class/backlight/intel_backlight/brightness\n&:' /etc/rc.local | sudo tee /etc/rc.local
+# TODO: Port this to systemd.
+# sed 's:^exit 0:chmod 777 /sys/class/backlight/intel_backlight/brightness\n&:' /etc/rc.local | sudo tee /etc/rc.local
 
 
 sudo apt install -y idle3 python3-pip scrot python3-tk python3-dev &&
@@ -136,12 +137,13 @@ wget -O- https://jgeboski.github.io/obs.key | sudo apt-key add - &&
 sudo apt update &&
 sudo apt install -y purple-facebook
 
+# Pubkey broken
 # Change ubuntu version manually
-sudo sh -c "echo 'deb https://dl.ring.cx/ring-nightly/ubuntu_18.04/ ring main' > /etc/apt/sources.list.d/ring-nightly-man.list" &&
-sudo apt-key adv --keyserver pgp.mit.edu --recv-keys A295D773307D25A33AE72F2F64CD5FA175348F84 &&
-sudo add-apt-repository universe &&
-sudo apt update &&
-sudo apt install -y ring
+# sudo sh -c "echo 'deb https://dl.ring.cx/ring-nightly/ubuntu_18.04/ ring main' > /etc/apt/sources.list.d/ring-nightly-man.list" &&
+# sudo apt-key adv --keyserver pgp.mit.edu --recv-keys A295D773307D25A33AE72F2F64CD5FA175348F84 &&
+# sudo add-apt-repository universe &&
+# sudo apt update &&
+# sudo apt install -y ring
 
 # Still need to manually install:
 cd $HOME &&
