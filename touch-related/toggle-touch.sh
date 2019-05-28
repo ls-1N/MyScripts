@@ -9,14 +9,14 @@
 DEVICE="Wacom HID 4846 Finger touch" 
 TOUCH_STATE=`xsetwacom get "$DEVICE" touch`
 MESSAGE_ON="Touch screen enabled"
-MESSAGE_OFF="Touch screen Disabled"
+MESSAGE_OFF="Touch screen disabled"
 if [ "$TOUCH_STATE" == "on" ]
   then
     xsetwacom set "$DEVICE" touch off && \
     echo $MESSAGE_OFF && \
-    zenity --notification --text "$MESSAGE_OFF"
+    qdbus org.kde.plasmashell /org/kde/osdService org.kde.osdService.showText input-touchpad-off "$MESSAGE_OFF"
   else
     xsetwacom set "$DEVICE" touch on && \
     echo $MESSAGE_ON && \
-    zenity --notification --text "$MESSAGE_ON"
+    qdbus org.kde.plasmashell /org/kde/osdService org.kde.osdService.showText input-touchpad-on "$MESSAGE_ON"
 fi
