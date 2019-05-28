@@ -1,21 +1,22 @@
 #!/bin/bash
-# Add the following to /etc/rc.local:
-#       chmod 666 /sys/class/backlight/intel_backlight/brightness
-# Modern systems might need tinkering to make rc.local work again.
-# The file .config/khotkeysrc should contain the hotkeys CTRL+SHIFT+F4/F5 to
-# adjust brightness down and up respectively.
-#
+
 # Usage:
 #    ./brightness.sh up   # bump up brightness
 #    ./brightness.sh down # bump down brightness
 #
-curr=`cat /sys/class/backlight/intel_backlight/brightness`
-bump=$(( $curr / 50 ))
+# Known problems:
+# - Unlike the default brightness adjustment, this one still shows the OSD after the caps have been reached.
+
+curr=`qdbus local.org_kde_powerdevil /org/kde/Solid/PowerManagement/Actions/BrightnessControl org.kde.Solid.PowerManagement.Actions.BrightnessControl.brightness`
+bump=`echo "$curr/50 + 1" | bc`
 if [ "$1" == "up" ]; then
-  curr=`echo "$curr + $bump + 1" | bc`
+  curr=`echo "$curr + $bump" | bc`
 else
-  curr=`echo "$curr - $bump - 1" | bc`
+  curr=`echo "$curr - $bump" | bc`
 fi
-# Set the brightness to the new level. 0 is the lower limit. Cant set it lower than that.
-printf "Current brightness: " && echo $curr | tee /sys/class/backlight/intel_backlight/brightness
+# Set the brightness to the new level (OSD included). The upper and lower cap seem to be enforced elsewhere.
+qdbus local.org_kde_powerdevil /org/kde/Solid/PowerManagement/Actions/BrightnessControl org.kde.Solid.PowerManagement.Actions.BrightnessControl.setBrightness $curr
+# Print output:
+printf "Current brightness: "
+qdbus local.org_kde_powerdevil /org/kde/Solid/PowerManagement/Actions/BrightnessControl org.kde.Solid.PowerManagement.Actions.BrightnessControl.brightness
 printf "Single step amount: $bump\n"
