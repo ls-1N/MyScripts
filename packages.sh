@@ -23,6 +23,8 @@ sudo add-apt-repository ppa:danielrichter2007/grub-customizer
 
 sudo add-apt-repository ppa:kubuntu-ppa/backports # for plasma-browser-integration
 
+sudo add-apt-repository ppa:gnumdk/lollypop
+
 # Pubkey broken
 # sudo sh -c "echo 'deb https://riot.im/packages/debian/ $DISTRO main' > /etc/apt/sources.list.d/matrix-riot-im.list"
 # curl -L https://riot.im/packages/debian/repo-key.asc | sudo apt-key add -
@@ -36,6 +38,8 @@ rm ./Release.key
 sudo apt update
 sudo apt upgrade -y
 
+sudo apt install -y cheese
+sudo apt install -y lollypop
 sudo apt install -y plasma-browser-integration
 sudo apt install -y borgbackup
 sudo apt install -y grub-customizer
