@@ -12,7 +12,7 @@ import sys
 from PyQt5.QtWidgets import QWidget, QDesktopWidget, QLabel, QApplication, QPlainTextEdit
 from PyQt5.QtCore import QFile, QIODevice, QTextStream, Qt
 
-file_path = 'hotkey cheatsheet' #I think this is searched for from $HOME by default
+file_path = './hotkey cheatsheet' #I think this is searched for from $HOME by default
 
 class Example(QWidget):
     
