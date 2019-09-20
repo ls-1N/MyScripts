@@ -9,7 +9,7 @@ script_dir="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 echo Detected $script_dir as script directory.
 
 # Set path variables
-list_path="$script_dir"/migrate_home_paths_list;
+list_path="$script_dir"/migrate_home_paths_list.cfg;
 log_path="$script_dir"/migrate_home-$(date -I'seconds').log;
 
 # The message that gets displayed as help
