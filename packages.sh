@@ -19,11 +19,11 @@ sudo add-apt-repository -y ppa:starws-box/deadbeef-player
 
 sudo apt-add-repository -y ppa:neovim-ppa/stable
 
-sudo add-apt-repository ppa:danielrichter2007/grub-customizer
+sudo add-apt-repository -y ppa:danielrichter2007/grub-customizer
 
-sudo add-apt-repository ppa:kubuntu-ppa/backports # for plasma-browser-integration
+sudo add-apt-repository -y ppa:kubuntu-ppa/backports # for plasma-browser-integration
 
-sudo add-apt-repository ppa:gnumdk/lollypop
+sudo add-apt-repository -y ppa:gnumdk/lollypop
 
 # Pubkey broken
 # sudo sh -c "echo 'deb https://riot.im/packages/debian/ $DISTRO main' > /etc/apt/sources.list.d/matrix-riot-im.list"
@@ -38,52 +38,54 @@ rm ./Release.key
 sudo apt update
 sudo apt upgrade -y
 
-sudo apt install -y cheese
-sudo apt install -y lollypop
-sudo apt install -y plasma-browser-integration
-sudo apt install -y borgbackup
-sudo apt install -y grub-customizer
-sudo apt install -y python-evdev
-sudo apt install -y python-pylibacl
-sudo apt install -y sc-controller
-sudo apt install -y neovim
-sudo apt install -y steam
-sudo apt install -y playonlinux
-sudo apt install -y vlc
-sudo apt install -y gimp
-sudo apt install -y krita
-sudo apt install -y qbittorrent
-sudo apt install -y gcal
-sudo apt install -y phoronix-test-suite
-sudo apt install -y openssh-server
-sudo apt install -y pidgin
-sudo apt install -y freeplane
-sudo apt install -y lm-sensors
-sudo apt install -y lolcat
-sudo apt install -y libreoffice
-sudo apt install -y git
-sudo apt install -y redshift-gtk
 sudo apt install -y anki
-sudo apt install -y kdenlive
-sudo apt install -y gparted
-sudo apt install -y qtqr
-sudo apt install -y lmms
-sudo apt install -y thunderbird
 sudo apt install -y audacity
-sudo apt install -y screenfetch
-sudo apt install -y synaptic
-sudo apt install -y unrar
-sudo apt install -y keepassxc
-sudo apt install -y nextcloud-client
-sudo apt install -y riot-web
+sudo apt install -y borgbackup
+sudo apt install -y cheese
 sudo apt install -y deadbeef
-sudo apt install -y telegram-purple
 sudo apt install -y filelight
 sudo apt install -y flatpak
-sudo pip3 install -U youtube-dl
-sudo apt install -y ppa-purge
+sudo apt install -y freeplane
+sudo apt install -y gcal
+sudo apt install -y gimp
+sudo apt install -y git
+sudo apt install -y gparted
+sudo apt install -y grub-customizer
 sudo apt install -y htop
-# apt-get install -y unison glmark2 unrar keepass2 eclipse
+sudo apt install -y kdenlive
+sudo apt install -y keepassxc
+sudo apt install -y krita
+sudo apt install -y libreoffice
+sudo apt install -y lm-sensors
+sudo apt install -y lmms
+sudo apt install -y lolcat
+sudo apt install -y lollypop
+sudo apt install -y neovim
+sudo apt install -y nextcloud-client
+sudo apt install -y openssh-server
+sudo apt install -y phoronix-test-suite
+sudo apt install -y pidgin
+sudo apt install -y plasma-browser-integration
+sudo apt install -y playonlinux
+sudo apt install -y ppa-purge
+sudo apt install -y python-evdev
+sudo apt install -y python-pylibacl
+sudo apt install -y qbittorrent
+sudo apt install -y qtqr
+sudo apt install -y redshift-gtk
+# sudo apt install -y riot-web
+sudo apt install -y sc-controller
+sudo apt install -y screenfetch
+sudo apt install -y steam
+sudo apt install -y synaptic
+sudo apt install -y telegram-purple
+sudo apt install -y thunderbird
+sudo apt install -y tmux
+sudo apt install -y unrar
+sudo apt install -y unrar
+sudo apt install -y vlc
+sudo pip3 install -U youtube-dl
+# apt-get install -y unison glmark2 keepass2 eclipse
 sudo apt -y purge ktorrent* transmission* gnumeric* abiword* gmusicbrowser* parole* dragonplayer* 
 # sudo apt -y purge kwalletmanager amarok*
 
@@ -94,9 +96,9 @@ wget https://github.com/mbusb/multibootusb/releases/download/v9.2.0/python3-mult
 sudo dpkg -i ./python3-multibootusb_9.2.0-1_all.deb
 rm -f ./python3-multibootusb_9.2.0-1_all.deb
 
-wget https://github.com/onivim/oni/releases/download/v0.3.6/Oni-0.3.6-amd64-linux.deb
-sudo dpkg -i ./Oni-0.3.6-amd64-linux.deb
-rm -f ./Oni-0.3.6-amd64-linux.deb
+wget https://github.com/onivim/oni/releases/download/v0.3.9/Oni-0.3.9-amd64-linux.deb
+sudo dpkg -i ./Oni-0.3.9-amd64-linux.deb
+rm -f ./Oni-0.3.9-amd64-linux.deb
 
 
 # Pasted from some place and dont actually know these {
@@ -142,7 +144,7 @@ sudo rm -r skype4pidgin
 # Manually check sometimes if this is the newest release at https://github.com/EionRobb/pidgin-opensteamworks/releases
 cd $HOME &&
 cd .purple/plugins &&
-wget https://github.com/EionRobb/pidgin-opensteamworks/releases/download/1.6.1/libsteam64-1.6.1.so
+wget https://github.com/EionRobb/pidgin-opensteamworks/releases/download/1.7/libsteam64.so
 
 # Change ubuntu version manually
 sudo echo "deb http://download.opensuse.org/repositories/home:/jgeboski/xUbuntu_18.04/ ./ " | sudo tee /etc/apt/sources.list.d/jgeboski.list &&
