@@ -1,2 +1,4 @@
 migrate_home*.log
 migrate_home_paths_list.cfg
+*.swp
+*.kate-swp
