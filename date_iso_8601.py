@@ -15,4 +15,4 @@ import time
 #so this is the amount of time i have to release the keys i pressed to trigger this script otherwise those keys will interfere with this typing
 time.sleep (0.3)
 #today formatted to ISO 8601 standard
-pyautogui.typewrite (str(datetime.date.today().isoformat()))
+pyautogui.write (str(datetime.date.today().isoformat()), interval=0.01)
