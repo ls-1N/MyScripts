@@ -8,8 +8,6 @@ import sys
 # sudo apt install python3-pip
 # pip install pulsectl
 
-# diff applies to non-BT Pulse devices
-#diff = int(sys.argv[1])
 method = 'org.bluez.MediaControl1.Volume{}'.format(
   'Down' if sys.argv[1] == 'down' else 'Up')
 
@@ -22,5 +20,3 @@ with Pulse() as pulse:
             '--dest=org.bluez', bluez_path, method,
         ]
         subprocess.run(args, check=True)
-    #else:
-        #pulse.volume_change_all_chans(sink, diff)
