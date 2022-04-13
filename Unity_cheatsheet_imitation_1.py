@@ -30,7 +30,7 @@ class Example(QWidget):
         font1.setPointSize(QDesktopWidget().availableGeometry().height()/60)
         self.setFont(font1)
 
-        text=open(file_path).read()
+        text = open(file_path).read()
         lbl1 = QLabel(text, self)
 
         self.setWindowTitle('Hotkeys')
