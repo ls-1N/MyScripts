@@ -11,6 +11,7 @@ import os
 import xml.etree.ElementTree as ET
 import re
 
+# TODO: replace with parameters and a config file
 # User-facing vars:
 home_directory = os.path.expanduser('~')
 search_path = f'{home_directory}/Documents/mindmaps/'
