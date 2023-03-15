@@ -70,7 +70,8 @@ for document in glob.iglob(search_path + '**/*.mm', recursive=True):
             contents = f.read()
         contents = re.sub(regex_for_styling_section, reference_map_styles_string, contents)
         for rule in update_rules:
-            contents = re.sub(f'STYLE_REF="{rule[0]}', f'STYLE_REF="{rule[1]}', contents)
+            substitution = re.subn(f'STYLE_REF="{rule[0]}', f'STYLE_REF="{rule[1]}', contents)
+            contents = substitution[0]
         with open(document, 'w') as f:
             f.write(contents)
-        print("\tSuccess!")
+        print(f"\tSuccess! Made {substitution[1]} substitutions.")
