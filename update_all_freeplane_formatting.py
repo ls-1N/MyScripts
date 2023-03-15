@@ -53,8 +53,8 @@ def get_map_styles_string(document):
 regex_for_styling_section = re.compile('(<map_styles>(.*\n)*</map_styles>)',re.MULTILINE)
 reference_map_styles_string = get_map_styles_string(template_document)
 styles_safe_to_modify = styling_defined(template_document)
-for rule in update_rules:
-    styles_safe_to_modify = styles_safe_to_modify | {rule[0]}
+for style_old, _ in update_rules:
+    styles_safe_to_modify = styles_safe_to_modify | {style_old}
 
 # Main
 for document in glob.iglob(search_path + '**/*.mm', recursive=True):
@@ -68,8 +68,8 @@ for document in glob.iglob(search_path + '**/*.mm', recursive=True):
         with open(document) as f:
             contents = f.read()
         contents = re.sub(regex_for_styling_section, reference_map_styles_string, contents)
-        for rule in update_rules:
-            substitution = re.subn(f'STYLE_REF="{rule[0]}', f'STYLE_REF="{rule[1]}', contents)
+        for style_old, style_new in update_rules:
+            substitution = re.subn(f'STYLE_REF="{style_old}', f'STYLE_REF="{style_new}', contents)
             contents = substitution[0]
         with open(document, 'w') as f:
             f.write(contents)
