@@ -52,8 +52,7 @@ def get_map_styles_string(document):
 # Technical vars:
 regex_for_styling_section = re.compile('(<map_styles>(.*\n)*</map_styles>)',re.MULTILINE)
 reference_map_styles_string = get_map_styles_string(template_document)
-reference_map_styles_set = styling_defined(template_document)
-styles_safe_to_modify = reference_map_styles_set
+styles_safe_to_modify = styling_defined(template_document)
 for rule in update_rules:
     styles_safe_to_modify = styles_safe_to_modify | {rule[0]}
 
@@ -61,7 +60,7 @@ for rule in update_rules:
 for document in glob.iglob(search_path + '**/*.mm', recursive=True):
     print(f"Found document: {os.path.join(search_path, document)}")
     in_document_but_not_in_safelist = styling_used(document) - styles_safe_to_modify
-    if in_document_but_not_in_safelist != set():
+    if in_document_but_not_in_safelist:
         print(f"\tSkipping: Found unknown stylings used: {in_document_but_not_in_safelist}")
     else:
         print("\tAttempting substitution...")
