@@ -27,7 +27,7 @@ update_rules = [
 ]
 
 
-def styling_used(document):
+def styling_used(document: str) -> set:
     '''Return a set of all stylings used in the body of a Freeplane document.'''
     tree = ET.parse(document)
     root = tree.getroot()
@@ -35,7 +35,7 @@ def styling_used(document):
     set2 = set(map(lambda elem : elem.get('LOCALIZED_STYLE_REF'), root.findall('.//*[@LOCALIZED_STYLE_REF]')))
     return(set1 | set2)
 
-def styling_defined(document):
+def styling_defined(document: str) -> set:
     '''Return a set of all stylings specified as available in a Freeplane document.'''
     tree = ET.parse(document)
     root = tree.getroot()
@@ -44,7 +44,7 @@ def styling_defined(document):
     set2 = set(map(lambda elem : elem.get('LOCALIZED_TEXT') , map_styles_xml))
     return(set1 | set2)
 
-def get_map_styles_string(document):
+def get_map_styles_string(document: str) -> str:
     '''Return the substring that is the map_styles subsection of a Freeplane document.'''
     with open(document, 'r') as f:
         return(regex_for_styling_section.search(f.read())[0])
