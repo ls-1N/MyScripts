@@ -16,14 +16,14 @@ home_directory = os.path.expanduser('~')
 search_path = f'{home_directory}/Documents/mindmaps/'
 template_document = f'{home_directory}/Documents/mindmaps/STYLE_TEMPLATE.mm'
 update_rules = [
-    [r'Pros',r'GREEN'],
-    [r'Cons',r'RED'],
-    [r'FOSS',r'GREEN'],
-    [r'NFCSS',r'RED'],
-    [r'Warning',r'ORANGE'],
-    [r'Items',r'CYAN'],
-    [r'Unimportant',r'Background'],
-    [r'`terminal`',r'xTerm'],
+    ['Pros','GREEN'],
+    ['Cons','RED'],
+    ['FOSS','GREEN'],
+    ['NFCSS','RED'],
+    ['Warning','ORANGE'],
+    ['Items','CYAN'],
+    ['Unimportant','Background'],
+    ['`terminal`','xTerm'],
 ]
 
 
@@ -70,7 +70,7 @@ for document in glob.iglob(search_path + '**/*.mm', recursive=True):
             contents = f.read()
         contents = re.sub(regex_for_styling_section, reference_map_styles_string, contents)
         for rule in update_rules:
-            contents = re.sub(rule[0], rule[1], contents)
+            contents = re.sub(f'STYLE_REF="{rule[0]}', f'STYLE_REF="{rule[1]}', contents)
         with open(document, 'w') as f:
             f.write(contents)
         print("\tSuccess!")
