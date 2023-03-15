@@ -53,9 +53,7 @@ def get_map_styles_string(file: str) -> str:
 # Technical vars:
 regex_for_styling_section = re.compile('(<map_styles>(.*\n)*</map_styles>)',re.MULTILINE)
 reference_map_styles_string = get_map_styles_string(template_document)
-styles_safe_to_modify = styling_defined(template_document)
-for style_old, _ in update_rules:
-    styles_safe_to_modify = styles_safe_to_modify | {style_old}
+styles_safe_to_modify = styling_defined(template_document) | {old_style for old_style, _ in update_rules}
 
 # Main
 for document in glob.iglob(search_path + '**/*.mm', recursive=True):
