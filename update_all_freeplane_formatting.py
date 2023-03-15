@@ -1,10 +1,10 @@
 #!/usr/bin/python3
-'''
+"""
 A script to find and modify styling of all Freeplane documents at a given path to conform to a template document.
 
 Key assumptions:
 * names of styles in all found documents are either unique or an iteration of a previous version with the same name
-'''
+"""
 
 import glob
 import os
@@ -27,27 +27,27 @@ update_rules = [
 ]
 
 
-def styling_used(document: str) -> set:
-    '''Return a set of all stylings used in the body of a Freeplane document.'''
-    tree = ET.parse(document)
+def styling_used(file: str) -> set:
+    """Return a set of all stylings used in the body of a Freeplane document."""
+    tree = ET.parse(file)
     root = tree.getroot()
     set1 = set(map(lambda elem : elem.get('STYLE_REF'), root.findall('.//*[@STYLE_REF]')))
     set2 = set(map(lambda elem : elem.get('LOCALIZED_STYLE_REF'), root.findall('.//*[@LOCALIZED_STYLE_REF]')))
-    return(set1 | set2)
+    return set1 | set2
 
-def styling_defined(document: str) -> set:
-    '''Return a set of all stylings specified as available in a Freeplane document.'''
-    tree = ET.parse(document)
+def styling_defined(file: str) -> set:
+    """Return a set of all stylings specified as available in a Freeplane document."""
+    tree = ET.parse(file)
     root = tree.getroot()
     map_styles_xml = root.findall('.//*[@LOCALIZED_TEXT=\'styles.root_node\']/stylenode/stylenode')
     set1 = set(map(lambda elem : elem.get('TEXT') , map_styles_xml))
     set2 = set(map(lambda elem : elem.get('LOCALIZED_TEXT') , map_styles_xml))
-    return(set1 | set2)
+    return set1 | set2
 
-def get_map_styles_string(document: str) -> str:
-    '''Return the substring that is the map_styles subsection of a Freeplane document.'''
-    with open(document, 'r') as f:
-        return(regex_for_styling_section.search(f.read())[0])
+def get_map_styles_string(file: str) -> str:
+    """Return the substring that is the map_styles subsection of a Freeplane document."""
+    with open(file, 'r') as f:
+        return regex_for_styling_section.search(f.read())[0]
 
 # Technical vars:
 regex_for_styling_section = re.compile('(<map_styles>(.*\n)*</map_styles>)',re.MULTILINE)
@@ -64,7 +64,6 @@ for document in glob.iglob(search_path + '**/*.mm', recursive=True):
         print(f"\tSkipping: Found unknown stylings used: {in_document_but_not_in_safelist}")
     else:
         print("\tAttempting substitution...")
-        contents = ''
         with open(document) as f:
             contents = f.read()
         contents = re.sub(regex_for_styling_section, reference_map_styles_string, contents)
