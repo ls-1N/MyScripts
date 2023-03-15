@@ -32,8 +32,8 @@ def styling_used(file: str) -> set:
     """Return a set of all stylings used in the body of a Freeplane document."""
     tree = ET.parse(file)
     root = tree.getroot()
-    set1 = set(map(lambda elem : elem.get('STYLE_REF'), root.findall('.//*[@STYLE_REF]')))
-    set2 = set(map(lambda elem : elem.get('LOCALIZED_STYLE_REF'), root.findall('.//*[@LOCALIZED_STYLE_REF]')))
+    set1 = {elem.get('STYLE_REF') for elem in root.findall('.//*[@STYLE_REF]')}
+    set2 = {elem.get('LOCALIZED_STYLE_REF') for elem in root.findall('.//*[@LOCALIZED_STYLE_REF]')}
     return set1 | set2
 
 def styling_defined(file: str) -> set:
@@ -41,8 +41,8 @@ def styling_defined(file: str) -> set:
     tree = ET.parse(file)
     root = tree.getroot()
     map_styles_xml = root.findall('.//*[@LOCALIZED_TEXT=\'styles.root_node\']/stylenode/stylenode')
-    set1 = set(map(lambda elem : elem.get('TEXT') , map_styles_xml))
-    set2 = set(map(lambda elem : elem.get('LOCALIZED_TEXT') , map_styles_xml))
+    set1 = {elem.get('TEXT') for elem in map_styles_xml}
+    set2 = {elem.get('LOCALIZED_TEXT') for elem in map_styles_xml}
     return set1 | set2
 
 def get_map_styles_string(file: str) -> str:
