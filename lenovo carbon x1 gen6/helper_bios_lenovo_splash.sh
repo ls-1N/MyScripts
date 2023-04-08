@@ -16,5 +16,5 @@ cp bios-update.modified.img bios-update.img
 
 ##### WARNING #####
 #Check if your usb drive *is* actually /dev/sdb from `sudo fdisk -l`.
-#and *if* it is then uncomment the following line (or run it manually).
+#and *if* it is then uncomment the following line (or run it manually after the previous commands).
 #sudo dd if=bios-update.img of=/dev/sdb oflag=direct status=progress
