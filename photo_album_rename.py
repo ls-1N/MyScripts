@@ -26,6 +26,8 @@ def process_match(successful_match, matched_file):
             if new_filename[19:20] != '.':
                 new_filename += '.'
             new_filename += character
+        else:
+            break
     new_filename += os.path.splitext(matched_file)[1]
     os.rename(matched_file, str(matched_file.parents[0]) + '/' + new_filename)
     print(f'renamed {matched_file} to {new_filename}')
