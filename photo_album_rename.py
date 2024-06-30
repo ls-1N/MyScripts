@@ -8,10 +8,10 @@ import click
 
 # TODO: Maybe convert these to tuples of before and after if this gets any more complicated
 sought_patterns = [
-    '\d\d\d\d:\d\d:\d\d \d\d:\d\d:\d\d\.[^\.]+', # e.g. 2022:12:06 23:03:02.jpg
-    '\d\d\d\d-\d\d-\d\dT\d\d:\d\d:\d\d\.[^\.]+', # e.g. 2022-12-06T23:03:02.jpg
-    '\d\d\d\d-\d\d-\d\d-\d\d-\d\d-\d\d\.[^\.]+', # e.g. 2022-12-06-23-03-02.jpg
-    '\d\d\d\d-\d\d-\d\d-\d\d-\d\d-\d\d-\d\d\d\.[^\.]+' # e.g. 2022-12-06-23-03-02-144.jpg
+    r'\d{4}:\d{2}:\d{2} \d{2}:\d{2}:\d{2}\.[^\.]+', # e.g. 2022:12:06 23:03:02.jpg
+    r'\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}\.[^\.]+', # e.g. 2022-12-06T23:03:02.jpg
+    r'\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}\.[^\.]+', # e.g. 2022-12-06-23-03-02.jpg
+    r'\d{4}-\d{2}-\d{2}-\d{2}-\d{2}-\d{2}-\d{3}\.[^\.]+' # e.g. 2022-12-06-23-03-02-144.jpg
     ]
 
 def process_match(successful_match, matched_file):
