@@ -1,14 +1,10 @@
 #!/usr/bin/python3
-"""
-Rename all matching files at a searched path to the format YYYY-MM-DD hh:mm:ss.*
-E.g. 2022-12-06 23:03:02.jpg
-Support for optional milliseconds at the end.
-"""
 
 from pathlib import Path
 import os
 import re
 import sys
+import click
 
 # TODO: Maybe convert these to tuples of before and after if this gets any more complicated
 sought_patterns = [
@@ -30,9 +26,17 @@ def process_match(successful_match, matched_file):
             break
     new_filename += os.path.splitext(matched_file)[1]
     os.rename(matched_file, str(matched_file.parents[0]) + '/' + new_filename)
-    print(f'renamed {matched_file} to {new_filename}')
+    click.echo(f'Renamed {matched_file} to {new_filename}')
 
-def process_files_at_path(path):
+@click.command()
+@click.argument('path', type=click.Path(exists=True))
+@click.option('--verbose', type=click.BOOL, default=False, help="Whether not matching files should be listed in the output")
+def process_files_at_path(path, verbose):
+    """
+    Rename all files at PATH that match the internally defined patterns to the 
+    format YYYY-MM-DD hh:mm:ss.extension (e.g. 2022-12-06 23:03:02.jpg).
+    The output supports milliseconds if detected in a specific pattern.
+    """
     for file in Path(path).rglob('*'):
         if file.is_file():
             file_matches_a_pattern = False
@@ -44,7 +48,8 @@ def process_files_at_path(path):
                 if successful_match:
                     process_match(successful_match, file)
                     file_matches_a_pattern = True
-            if not file_matches_a_pattern:
-                print(f'not matched {file}')
+            if verbose and not file_matches_a_pattern:
+                click.echo(f'Not matched: {file}')
 
-process_files_at_path(sys.argv[1])
+if __name__ == '__main__':
+    process_files_at_path()
