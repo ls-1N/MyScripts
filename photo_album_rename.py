@@ -16,7 +16,7 @@ sought_patterns = [
 
 def process_match(successful_match, matched_file):
     m = successful_match.group(0)
-    new_filename = m[:4] + '-' + m[5:7] + '-' + m[8:10] + ' ' + m[11:13] + ':' + m[14:16] + ':' + m[17:19]
+    new_filename = f'{m[:4]}-{m[5:7]}-{m[8:10]} {m[11:13]}:{m[14:16]}:{m[17:19]}'
     for character in list(m[20:23]):
         if character.isnumeric():
             if new_filename[19:20] != '.':
@@ -25,8 +25,8 @@ def process_match(successful_match, matched_file):
         else:
             break
     new_filename += os.path.splitext(matched_file)[1]
-    os.rename(matched_file, str(matched_file.parents[0]) + '/' + new_filename)
-    click.echo(f'Renamed {matched_file} to {new_filename}')
+    os.rename(matched_file, f'{matched_file.parents[0]}/{new_filename}')
+    click.echo(f"Renamed {matched_file} to {new_filename}")
 
 @click.command()
 @click.argument('path', type=click.Path(exists=True))
@@ -49,7 +49,7 @@ def process_files_at_path(path, verbose):
                     process_match(successful_match, file)
                     file_matches_a_pattern = True
             if verbose and not file_matches_a_pattern:
-                click.echo(f'Not matched: {file}')
+                click.echo(f"Not matched: {file}")
 
 if __name__ == '__main__':
     process_files_at_path()
